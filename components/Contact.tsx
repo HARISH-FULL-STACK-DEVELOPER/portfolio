@@ -159,7 +159,6 @@
 
 
 
-
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -202,20 +201,16 @@ const Contact: React.FC = () => {
     }, 3000);
   };
 
-  // Animation Variants for "Move and Come" effect
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -226,7 +221,7 @@ const Contact: React.FC = () => {
   return (
     <section className="px-6 md:px-12 lg:px-24 py-24 bg-black overflow-hidden border-t border-white/5">
       <motion.div 
-        className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-32"
+        className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-32 items-center"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -235,133 +230,124 @@ const Contact: React.FC = () => {
         
         {/* --- LEFT COLUMN: INFO & SOCIALS --- */}
         <div className="flex flex-col justify-start">
-          <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-[2px] bg-blue-600"></div>
-            <span className="text-xs font-black tracking-[0.8em] text-gray-400 uppercase">
+          <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
+            <div className="w-10 h-[2px] bg-blue-600"></div>
+            <span className="text-[10px] font-black tracking-[0.8em] text-gray-500 uppercase">
               CONTACT
             </span>
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-10 leading-[0.9] uppercase">
+          <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-8 leading-[1] uppercase">
             LET'S BUILD <br />
             <span className="text-blue-500">SOMETHING</span> <br />
             TOGETHER
           </motion.h2>
-          
-          <motion.p variants={itemVariants} className="text-gray-400 text-lg mb-12 max-w-lg leading-relaxed font-medium">
-            Currently looking for new opportunities. Click below to reveal my direct contact details or use the form to send a quick brief.
+
+          <motion.p variants={itemVariants} className="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed font-medium">
+            Currently looking for new opportunities. Feel free to reach out via the form or social links.
           </motion.p>
 
-          {/* Contact Details with Big Icons */}
-          <div className="space-y-10 mb-16">
-            
-            {/* BIG EMAIL ICON & REVEAL */}
-            <motion.div variants={itemVariants} className="flex items-center gap-8 group cursor-pointer" onClick={() => setRevealEmail(true)}>
-              <div className="w-20 h-20 bg-white/5 rounded-[2.5rem] flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-all shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <div className="space-y-8 mb-10">
+            {/* EMAIL REVEAL */}
+            <motion.div variants={itemVariants} className="flex items-center gap-5 group cursor-pointer" onClick={() => setRevealEmail(true)}>
+              <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase block mb-1">EMAIL ME</span>
+              <div>
+                <span className="text-[9px] font-bold tracking-[0.2em] text-gray-500 block mb-0.5 uppercase">Email Address</span>
                 <AnimatePresence mode="wait">
                   {!revealEmail ? (
-                    <motion.button 
-                      key="hide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      className="text-lg font-bold text-blue-500/40 hover:text-blue-500 tracking-widest text-left uppercase"
-                    >
-                      Click to reveal
-                    </motion.button>
+                    <motion.button key="h" initial={{opacity:0}} animate={{opacity:1}} className="text-sm font-bold text-blue-500/50 hover:text-blue-500 uppercase tracking-widest transition-colors">Click to reveal</motion.button>
                   ) : (
-                    <motion.a 
-                      key="show" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                      href="mailto:harish2harish2004@gmail.com" 
-                      className="text-xl md:text-2xl font-black text-white hover:text-blue-500 transition-colors break-all"
-                    >
-                      harish2harish2004@gmail.com
-                    </motion.a>
+                    <motion.a key="s" initial={{opacity:0, y:5}} animate={{opacity:1, y:0}} href="mailto:harish2harish2004@gmail.com" className="text-base font-bold text-white transition-colors">harish2harish2004@gmail.com</motion.a>
                   )}
                 </AnimatePresence>
               </div>
             </motion.div>
 
-            {/* BIG PHONE DIALER ICON & REVEAL */}
-            <motion.div variants={itemVariants} className="flex items-center gap-8 group cursor-pointer" onClick={() => setRevealPhone(true)}>
-              <div className="w-20 h-20 bg-white/5 rounded-[2.5rem] flex items-center justify-center border border-white/10 group-hover:border-green-500/50 transition-all shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
+            {/* PHONE REVEAL */}
+            <motion.div variants={itemVariants} className="flex items-center gap-5 group cursor-pointer" onClick={() => setRevealPhone(true)}>
+              <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:border-green-500/50 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase block mb-1">CALL ME DIRECT</span>
+              <div>
+                <span className="text-[9px] font-bold tracking-[0.2em] text-gray-500 block mb-0.5 uppercase">Call Me Direct</span>
                 <AnimatePresence mode="wait">
                   {!revealPhone ? (
-                    <motion.button 
-                      key="hide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      className="text-lg font-bold text-green-500/40 hover:text-green-500 tracking-widest text-left uppercase"
-                    >
-                      Click to reveal
-                    </motion.button>
+                    <motion.button key="h" initial={{opacity:0}} animate={{opacity:1}} className="text-sm font-bold text-green-500/50 hover:text-green-500 uppercase tracking-widest transition-colors">Click to reveal</motion.button>
                   ) : (
-                    <motion.a 
-                      key="show" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                      href="tel:+918838973320" 
-                      className="text-xl md:text-2xl font-black text-white hover:text-green-500 transition-colors"
-                    >
-                      +91 8838973320
-                    </motion.a>
+                    <motion.a key="s" initial={{opacity:0, y:5}} animate={{opacity:1, y:0}} href="tel:+918838973320" className="text-base font-bold text-white transition-colors">+91 8838973320</motion.a>
                   )}
                 </AnimatePresence>
               </div>
             </motion.div>
           </div>
+
+          {/* SMALL SOCIAL ICONS ONLY */}
+          <div className="flex gap-4">
+            <motion.a 
+              variants={itemVariants} 
+              href="https://www.linkedin.com/in/harish-m2004/" 
+              target="_blank" 
+              className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 hover:border-blue-500 hover:bg-blue-500/5 transition-all group"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-white transition-colors"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </motion.a>
+            <motion.a 
+              variants={itemVariants} 
+              href="https://github.com/HARISH-FULL-STACK-DEVELOPER/" 
+              target="_blank" 
+              className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 hover:border-white hover:bg-white/5 transition-all group"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-white transition-colors"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </motion.a>
+          </div>
         </div>
 
-        {/* --- RIGHT COLUMN: FORM --- */}
+        {/* --- RIGHT COLUMN: FORM BOX --- */}
         <motion.div 
           variants={itemVariants}
-          className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[3.5rem] shadow-2xl h-fit relative"
+          className="bg-[#0a0a0a] border border-white/5 p-8 md:p-14 rounded-[2.5rem] shadow-2xl relative"
         >
-          {/* Subtle Glow behind form */}
-          <div className="absolute inset-0 bg-blue-600/5 blur-[100px] -z-10 rounded-full" />
-          
-          <form ref={form} onSubmit={handleSendMessage} className="space-y-6">
+          <form ref={form} onSubmit={handleSendMessage} className="space-y-8">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] block">Full Name</label>
+              <div className="space-y-2.5">
+                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block px-1">Full Name</label>
                 <input 
                   name="name" required type="text" placeholder="John Doe" 
-                  className="w-full bg-black/50 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-gray-700"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-blue-500/20"
                 />
               </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] block">Phone Number</label>
+              <div className="space-y-2.5">
+                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block px-1">Phone Number</label>
                 <input 
                   name="phone" required type="tel" placeholder="+91" 
-                  className="w-full bg-black/50 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-gray-700"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-blue-500/20"
                 />
               </div>
             </div>
 
-            <div className="space-y-3">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] block">Email Address</label>
+            <div className="space-y-2.5">
+              <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block px-1">Email Address</label>
               <input 
                 name="email" required type="email" placeholder="hello@example.com" 
-                className="w-full bg-black/50 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-gray-700"
+                className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium placeholder:text-blue-500/20"
               />
             </div>
 
-            <div className="space-y-3">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] block">Your Message</label>
+            <div className="space-y-2.5">
+              <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block px-1">Your Message</label>
               <textarea 
                 name="message" required placeholder="How can I help you?" 
                 rows={4}
-                className="w-full bg-black/50 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium resize-none placeholder:text-gray-700"
+                className="w-full bg-black/40 border border-white/10 rounded-2xl p-5 outline-none focus:border-blue-500/50 transition-all text-white font-medium resize-none placeholder:text-blue-500/20"
               ></textarea>
             </div>
             
             <button 
               type="submit"
-              className={`w-full py-6 rounded-2xl font-black text-xs uppercase tracking-[0.4em] transition-all duration-300 active:scale-95 shadow-2xl
-                ${status === 'success' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-500 shadow-blue-500/20'}`}
+              className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 shadow-xl
+                ${status === 'success' ? 'bg-green-600' : 'bg-[#2563eb] hover:bg-blue-500 text-white'}`}
             >
               {status === 'success' ? 'OPENING WHATSAPP...' : 'SEND INQUIRY IN WHATSAPP'}
             </button>

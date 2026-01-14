@@ -107,15 +107,17 @@ const Navbar: React.FC = () => {
               ))}
             </div>
 
-            {/* Bottom Menu Info */}
-            <div className="mt-auto pt-10 border-t border-white/10 flex flex-col gap-4">
-              <p className="text-gray-500 text-xs tracking-widest uppercase font-bold">Socials</p>
-              <div className="flex gap-8">
-                <a href="#" className="text-sm font-bold hover:text-blue-500 transition-colors">INSTAGRAM</a>
-                <a href="#" className="text-sm font-bold hover:text-blue-500 transition-colors">LINKEDIN</a>
-                <a href="#" className="text-sm font-bold hover:text-blue-500 transition-colors">TWITTER</a>
-              </div>
+            {/* CTA in Mobile Menu */}
+            <div className="mt-auto pb-10">
+              <a 
+                href="#contact" 
+                onClick={() => setIsOpen(false)}
+                className="inline-block px-10 py-5 bg-white text-black text-xs font-black tracking-widest rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300"
+              >
+                HIRE ME NOW
+              </a>
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
